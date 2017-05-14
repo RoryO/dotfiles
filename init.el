@@ -47,3 +47,8 @@
   (set-face-attribute 'default nil :family "Inconsolata")
   (set-face-attribute 'default nil :height 240)
 )
+
+(when (eq system-type 'windows-nt)
+  (set-face-attribute 'default nil :family "Consolas")
+  (set-face-attribute 'default nil :height 180)
+)
