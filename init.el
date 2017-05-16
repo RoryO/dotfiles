@@ -7,6 +7,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -19,13 +20,13 @@
 (use-package flycheck :ensure t :config (global-flycheck-mode))
 (use-package helm :ensure t)
 (use-package magit :ensure t)
+(use-package org :ensure t)
 (use-package projectile :ensure t :config (projectile-mode))
 (use-package relative-line-numbers :ensure t :config (global-relative-line-numbers-mode))
 (use-package robe :ensure t :config (add-hook 'enh-ruby-mode-hook 'robe-mode))
 (use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
 (use-package web-mode :ensure t)
 (use-package yaml-mode :ensure t)
-
 (use-package enh-ruby-mode :ensure t :config
     (add-to-list 'auto-mode-alist
 		 '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
@@ -46,6 +47,7 @@
     (column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
  '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
+ '(semantic-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
