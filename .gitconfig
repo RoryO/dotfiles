@@ -1,0 +1,35 @@
+[user]
+	name = Rory OConnell
+	email = rory.ocon@gmail.com
+[core]
+	editor = emacsclient
+[push]
+	default = simple
+[mergetool "[tool]"]
+	cmd = opendiff
+[merge]
+	tool = opendiff
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[alias]
+  co = checkout
+  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  cob = checkout -b
+  save = !OVERCOMMIT_DISABLE=1 git add -A && git commit -m 'SAVEPOINT'
+  wip = !OVERCOMMIT_DISABLE=1 git add -u && git commit -m 'WIP'
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+  current-branch = symbolic-ref --short HEAD
+  lmt = mergetool --tool=meld
+  create-remote = !git push --set-upstream origin `git current-branch`
+  delete-merged-branches = !git branch --merged | grep -v master | xargs git branch -d
+  findpr = !sh -c 'git log --reverse --grep=\"Merge pull request\" -n 1 \
+        --ancestry-path master ^$1 $@' -
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
