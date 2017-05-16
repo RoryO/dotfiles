@@ -1,3 +1,7 @@
+;;; init --- Startup
+;;; Commentary:
+
+;;; Code:
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -9,13 +13,19 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package auto-complete :ensure t)
+(use-package column-marker :ensure t :config (column-marker-1 120))
 (use-package evil :ensure t :config (evil-mode 1))
-(use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
-(use-package magit :ensure t)
-(use-package web-mode :ensure t)
 (use-package flycheck :ensure t :config (global-flycheck-mode))
+(use-package helm :ensure t)
+(use-package magit :ensure t)
+(use-package projectile :ensure t :config (projectile-mode))
 (use-package relative-line-numbers :ensure t :config (global-relative-line-numbers-mode))
 (use-package robe :ensure t :config (add-hook 'enh-ruby-mode-hook 'robe-mode))
+(use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
+(use-package web-mode :ensure t)
+(use-package yaml-mode :ensure t)
+
 (use-package enh-ruby-mode :ensure t :config
     (add-to-list 'auto-mode-alist
 		 '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
@@ -33,7 +43,8 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+    (column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+ '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -52,3 +63,9 @@
   (set-face-attribute 'default nil :family "Consolas")
   (set-face-attribute 'default nil :height 180)
 )
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-stop-list (number-sequence 2 120 2))
+
+(provide 'init)
+;;; init ends here
