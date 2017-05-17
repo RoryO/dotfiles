@@ -14,16 +14,25 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package auto-complete :ensure t)
 (use-package column-marker :ensure t :config (column-marker-1 120))
-(use-package evil :ensure t :config (evil-mode 1))
+(use-package company :ensure t :config (global-company-mode))
+(use-package evil :ensure t :config
+  (evil-mode 1)
+  (evil-ex-define-cmd "bls" 'helm-buffers-list)
+  (evil-ex-define-cmd "[me]ta" 'helm-M-x)
+)
 (use-package flycheck :ensure t :config (global-flycheck-mode))
 (use-package helm :ensure t)
+(use-package inf-ruby :ensure t :config
+  (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+)
 (use-package magit :ensure t)
 (use-package org :ensure t)
 (use-package projectile :ensure t :config (projectile-mode))
 (use-package relative-line-numbers :ensure t :config (global-relative-line-numbers-mode))
 (use-package robe :ensure t :config (add-hook 'enh-ruby-mode-hook 'robe-mode))
+(use-package slim-mode :ensure t)
 (use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
 (use-package web-mode :ensure t)
 (use-package yaml-mode :ensure t)
@@ -41,10 +50,11 @@
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(global-company-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+    (slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
  '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
  '(semantic-mode t)
