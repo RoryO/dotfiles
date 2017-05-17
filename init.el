@@ -29,7 +29,9 @@
 )
 (use-package magit :ensure t)
 (use-package org :ensure t)
-(use-package projectile :ensure t :config (projectile-mode))
+(use-package projectile :ensure t :config
+  (projectile-mode)
+  (use-package projectile-rails :ensure t :config (projectile-rails-global-mode)))
 (use-package relative-line-numbers :ensure t :config (global-relative-line-numbers-mode))
 (use-package robe :ensure t :config (add-hook 'enh-ruby-mode-hook 'robe-mode))
 (use-package slim-mode :ensure t)
@@ -54,7 +56,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+    (projectile-rails slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
  '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
  '(semantic-mode t)
