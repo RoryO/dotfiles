@@ -9,7 +9,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(org-babel-load-file "./configuration.org")
+(org-babel-load-file (expand-file-name "./configuration.org" user-emacs-directory))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
