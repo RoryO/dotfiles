@@ -55,7 +55,9 @@
 #+BEGIN_SRC emacs-lisp
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
+(setq-default js-indent-level 2)
 (setq-default tab-stop-list (number-sequence 2 120 2))
+(setq web-mode-markup-indent-offset 2)
 #+END_SRC
   
 ** Projectile
