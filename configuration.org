@@ -53,10 +53,10 @@
 * Behavior configuration
 ** Tab taming
 #+BEGIN_SRC emacs-lisp
-(setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
-(setq-default js-indent-level 2)
+(setq-default tab-width 2)
 (setq-default tab-stop-list (number-sequence 2 120 2))
+(setq-default js-indent-level 2)
 (setq web-mode-markup-indent-offset 2)
 #+END_SRC
   
@@ -65,6 +65,10 @@
 (setq projectile-enable-caching t)
 #+END_SRC
 
+** Scroll bars
+#+BEGIN_SRC emacs-lisp
+(scroll-bar-mode nil)
+#+END_SRC
 * Evil 
 ** Config
 #+BEGIN_SRC emacs-lisp
