@@ -9,6 +9,7 @@
     (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
     (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
     (package-initialize)
+    (package-refresh-contents)
    #+END_SRC
 ** Install use-package if not present
    #+BEGIN_SRC emacs-lisp
@@ -23,6 +24,7 @@
 (use-package column-marker :ensure t :config (column-marker-1 120))
 (use-package company :ensure t :config (global-company-mode))
 (use-package evil :ensure t :config (evil-mode 1))
+(use-package evil-org :ensure t)
 (use-package flycheck :ensure t :config (global-flycheck-mode))
 (use-package helm :ensure t :config)
 (use-package inf-ruby :ensure t :config
@@ -51,6 +53,10 @@
 * Utility functions
 
 * Behavior configuration
+** Row and column visualization
+#+BEGIN_SRC emacs-lisp
+(global-hl-line-mode)
+#+END_SRC
 ** Tab taming
 #+BEGIN_SRC emacs-lisp
 (setq-default tab-width 2)
@@ -65,6 +71,10 @@
 (setq projectile-enable-caching t)
 #+END_SRC
 
+** Org Mode
+   #+BEGIN_SRC emacs-lisp
+   (setq org-src-fontify-natively t)
+   #+END_SRC
 * Evil 
 ** Config
 #+BEGIN_SRC emacs-lisp
