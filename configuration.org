@@ -53,6 +53,21 @@
 * Utility functions
 
 * Behavior configuration
+** Initial server
+#+BEGIN_SRC emacs-lisp
+(unless (server-running-p) server-start)
+#+END_SRC
+** Temp file taming
+#+BEGIN_SRC emacs-lisp
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.emacs_saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+#+END_SRC
 ** Row and column visualization
 #+BEGIN_SRC emacs-lisp
 (global-hl-line-mode)
@@ -78,13 +93,22 @@
 ** Org Mode
    #+BEGIN_SRC emacs-lisp
    (setq org-src-fontify-natively t)
+   (setq org-directory "~/Dropbox/Documents/Notes")
+   (setq org-default-notes-file (concat org-directory "capture.org"))
    #+END_SRC
+** Dired taming
+#+BEGIN_SRC emacs-lisp
+  (put 'dired-find-alternate-file 'disabled nil)
+#+END_SRC
+** Disable blink
+#+BEGIN_SRC emacs-lisp
+  '(blink-cursor-mode nil)
+#+END_SRC
 * Evil 
 ** Config
 #+BEGIN_SRC emacs-lisp
 (setq evil-shift-width 2)
 #+END_SRC
-
 ** Bindings
 *** General
 #+BEGIN_SRC emacs-lisp
