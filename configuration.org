@@ -105,10 +105,14 @@
 #+BEGIN_SRC emacs-lisp
   '(blink-cursor-mode nil)
 #+END_SRC
+** Wrap on full words
+#+BEGIN_SRC emacs-lisp
+(global-visual-line-mode t)
+#+END_SRC
 * Evil 
 ** Config
 #+BEGIN_SRC emacs-lisp
-(setq evil-shift-width 2)
+(setq-default evil-shift-width 2)
 #+END_SRC
 ** Bindings
 *** General
