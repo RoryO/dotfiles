@@ -55,7 +55,7 @@
 * Behavior configuration
 ** Initial server
 #+BEGIN_SRC emacs-lisp
-(unless (server-running-p) server-start)
+(unless (server-running-p) (server-start))
 #+END_SRC
 ** Temp file taming
 #+BEGIN_SRC emacs-lisp
