@@ -109,6 +109,14 @@
 #+BEGIN_SRC emacs-lisp
 (global-visual-line-mode t)
 #+END_SRC
+** RSpec mode
+   #+BEGIN_SRC emacs-lisp
+(setq-default rspec-use-chruby t)
+   #+END_SRC
+** Remove trailing whitespace
+#+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
 * Evil 
 ** Config
 #+BEGIN_SRC emacs-lisp
