@@ -195,6 +195,10 @@
 (evil-ex-define-cmd "RGschema"    'projectile-rails-goto-schema)
 (evil-ex-define-cmd "RGspechelper" 'projectile-rails-goto-spec-helper)
   #+END_SRC
+** Major mode disable
+   #+BEGIN_SRC emacs-lisp
+(evil-set-initial-state 'artist-mode 'emacs)
+   #+END_SRC
 * OS-specific configuration
   #+BEGIN_SRC emacs-lisp
 (when (eq system-type 'darwin)
