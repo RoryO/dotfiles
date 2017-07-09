@@ -91,7 +91,7 @@
 
 ** Scroll bars
 #+BEGIN_SRC emacs-lisp
-(scroll-bar-mode nil)
+(scroll-bar-mode -1)
 #+END_SRC
 ** Org Mode
    #+BEGIN_SRC emacs-lisp
