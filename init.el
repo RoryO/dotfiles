@@ -23,7 +23,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (markdown-mode evil-matchit linum-relative ag projectile-rails slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+    (rspec-mode evil-surround evil-org company chruby evil-matchit markdown-mode linum-relative ag projectile-rails slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
  '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
  '(semantic-mode t)
