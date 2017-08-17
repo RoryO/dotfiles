@@ -40,7 +40,8 @@
   (projectile-mode)
   (use-package projectile-rails :ensure t :config (projectile-rails-global-mode)))
 (use-package linum-relative :ensure t :config (linum-relative-global-mode))
-(use-package robe :ensure t :config 
+(use-package rinari :ensure t)
+(use-package robe :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (push 'company-robe company-backends))
 (use-package rspec-mode :ensure t)
@@ -82,8 +83,9 @@
 (setq-default tab-stop-list (number-sequence 2 120 2))
 (setq-default js-indent-level 2)
 (setq web-mode-markup-indent-offset 2)
+(setq ruby-deep-indent-paren nil)
 #+END_SRC
-  
+
 ** Projectile
 #+BEGIN_SRC emacs-lisp
 (setq projectile-enable-caching t)
@@ -119,7 +121,7 @@
 #+BEGIN_SRC emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+END_SRC
-* Evil 
+* Evil
 ** Config
 #+BEGIN_SRC emacs-lisp
 (setq-default evil-shift-width 2)
@@ -128,6 +130,7 @@
 *** General
 #+BEGIN_SRC emacs-lisp
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(evil-define-minor-mode-key 'normal 'robe-mode "C-:" 'robe-jump)
 #+END_SRC
 
 *** Helm
