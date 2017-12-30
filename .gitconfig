@@ -1,8 +1,10 @@
 [user]
 	name = Rory OConnell
-	email = rory.ocon@gmail.com
+	email = 19547+RoryO@users.noreply.github.com
+	signingkey = CD047DEA
 [core]
 	editor = emacsclient
+	excludesfile = /home/rory/.gitignore
 [push]
 	default = simple
 [mergetool "[tool]"]
@@ -33,3 +35,5 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[gpg]
+	program = gpg2
