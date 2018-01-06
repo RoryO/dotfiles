@@ -36,11 +36,14 @@
 )
 (use-package magit :ensure t :config)
 (use-package markdown-mode :ensure t)
+(use-package nlinum-relative :ensure t :config
+  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+  (nlinum-relative-setup-evil)
+)
 (use-package org :ensure t)
 (use-package projectile :ensure t :config
   (projectile-mode)
   (use-package projectile-rails :ensure t :config (projectile-rails-global-mode)))
-(use-package linum-relative :ensure t :config (linum-relative-global-mode))
 (use-package rinari :ensure t)
 (use-package robe :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
