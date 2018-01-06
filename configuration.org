@@ -27,7 +27,7 @@
 (use-package evil :ensure t :config (evil-mode 1))
 (use-package evil-matchit :ensure t)
 (use-package evil-org :ensure t)
-(use-package evil-surround :ensure t)
+(use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
 (use-package flycheck :ensure t :config (global-flycheck-mode))
 (use-package helm :ensure t :config)
 (use-package inf-ruby :ensure t :config
@@ -121,6 +121,18 @@
 ** Remove trailing whitespace
 #+BEGIN_SRC emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+** Always refresh buffers
+#+BEGIN_SRC emacs-lisp
+(global-auto-revert-mode t)
+#+END_SRC
+** Open files directly from symlinks
+#+BEGIN_SRC emacs-lisp
+(setq vc-follow-symlinks t)
+#+END_SRC
+** Change yes-no to y-n
+#+BEGIN_SRC emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
 * Evil
 ** Config
