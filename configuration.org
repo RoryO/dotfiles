@@ -52,6 +52,7 @@
 (use-package slim-mode :ensure t)
 (use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
 (use-package web-mode :ensure t)
+(use-package writegood-mode :ensure t)
 (use-package yaml-mode :ensure t)
 (use-package enh-ruby-mode :ensure t :config
     (add-to-list 'auto-mode-alist
