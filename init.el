@@ -29,6 +29,8 @@
  '(package-selected-packages
    (quote
     (irony company-irony irony-mode helm-company evil-collection writegood-mode nlinum-relative editorconfig rinari rspec-mode evil-surround evil-org company chruby evil-matchit markdown-mode ag projectile-rails slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+||||||| merged common ancestors
+    (nlinum-relative editorconfig rinari rspec-mode evil-surround evil-org company chruby evil-matchit markdown-mode ag projectile-rails slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
  '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
  '(semantic-mode t)

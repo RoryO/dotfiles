@@ -55,11 +55,14 @@
 (use-package org :mode "\\.org\\'" :ensure t)
 (use-package projectile :ensure t :config
   (projectile-mode)
-  (use-package projectile-rails :mode "\\.rb\\'" :ensure t :config (projectile-rails-global-mode)))
+)
+(use-package rg :ensure t)
 (use-package rinari :mode "\\.rb\\'" :ensure t)
 (use-package robe :mode "\\.rb\\'" :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
-  (push 'company-robe company-backends))
+  (use-package projectile-rails :mode "\\.rb\\'" :ensure t :config (projectile-rails-global-mode))
+  (push 'company-robe company-backends)
+)
 (use-package rspec-mode :mode "\\.rb\\'" :ensure t)
 (use-package slim-mode :mode "\\.slim\\'" :ensure t)
 (use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
@@ -188,7 +191,7 @@
 *** Projectile
 #+BEGIN_SRC emacs-lisp
 (evil-ex-define-cmd "ff" 'projectile-find-file)
-#+END_SRC
+(evil-ex-define-cmd "prg" 'rg-project)
 *** Projectile-Rails
 #+BEGIN_SRC emacs-lisp
 ;; Projectile Rails find actions.
