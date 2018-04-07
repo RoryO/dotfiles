@@ -3,3 +3,5 @@ configuration.el
 \#*\#
 *.elc
 .\#*
+elpa/
+semanticdb/
