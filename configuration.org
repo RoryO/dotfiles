@@ -17,48 +17,59 @@
   (package-refresh-contents)
   (package-install 'use-package))
    #+END_SRC
+*
 ** Define desired packages in alphabetical order
    #+BEGIN_SRC emacs-lisp
-(use-package ag :ensure t)
-(use-package chruby :ensure t)
+(use-package chruby :ensure t :mode "\\.rb\\'")
 ;(use-package column-marker :ensure t :config (column-marker-1 120))
 (use-package company :ensure t :config (global-company-mode))
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
 (use-package evil :ensure t :init (setq evil-want-integration nil) :config (evil-mode 1))
 (use-package evil-collection :after evil :ensure t :config (evil-collection-init))
 (use-package evil-matchit :ensure t)
-(use-package evil-org :ensure t)
+(use-package evil-org :mode "\\.org\\'" :ensure t)
 (use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
-(use-package flycheck :ensure t :config (global-flycheck-mode))
+(use-package flycheck :ensure t :config
+  (global-flycheck-mode)
+  (use-package flycheck-irony :ensure t :config
+    (add-hook 'flycheck-mode #'flycheck-irony-setup)
+  )
+)
 (use-package helm :ensure t :config (helm-mode))
-(use-package inf-ruby :ensure t :config
+(use-package inf-ruby :ensure t :mode "\\.rb\\'" :config
   (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
   (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
 )
-(use-package magit :ensure t :config)
-(use-package markdown-mode :ensure t)
+(use-package irony :ensure t :config
+  (setq-default w32-pipe-read-delay 0)
+  (use-package company-irony :ensure t :config
+    (add-to-list 'company-backends 'company-irony)
+  )
+)
+(use-package magit :defer t :ensure t :config)
+(use-package markdown-mode :mode "\\.md\\'" :ensure t)
 (use-package nlinum-relative :ensure t :config
   (add-hook 'prog-mode-hook 'nlinum-relative-mode)
   (nlinum-relative-setup-evil)
 )
-(use-package org :ensure t)
+(use-package org :mode "\\.org\\'" :ensure t)
 (use-package projectile :ensure t :config
   (projectile-mode)
-  (use-package projectile-rails :ensure t :config (projectile-rails-global-mode)))
-(use-package rinari :ensure t)
-(use-package robe :ensure t :config
+  (use-package projectile-rails :mode "\\.rb\\'" :ensure t :config (projectile-rails-global-mode)))
+(use-package rinari :mode "\\.rb\\'" :ensure t)
+(use-package robe :mode "\\.rb\\'" :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (push 'company-robe company-backends))
-(use-package rspec-mode :ensure t)
-(use-package slim-mode :ensure t)
+(use-package rspec-mode :mode "\\.rb\\'" :ensure t)
+(use-package slim-mode :mode "\\.slim\\'" :ensure t)
 (use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
-(use-package web-mode :ensure t :config
+(use-package web-mode :defer t :ensure t :config
   (add-to-list 'auto-mode-alist '("\\.js[x]\\\'" . web-mode))
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 )
 (use-package writegood-mode :ensure t)
-(use-package yaml-mode :ensure t)
-(use-package enh-ruby-mode :ensure t :config
+(use-package yaml-mode :mode "\\.yml\\'" :ensure t)
+(use-package enh-ruby-mode :mode "\\.rb\\'" :ensure t :config
     (add-to-list 'auto-mode-alist
 		 '("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
 )
@@ -68,6 +79,7 @@
 * Behavior configuration
 ** Initial server
 #+BEGIN_SRC emacs-lisp
+(require 'server)
 (unless (server-running-p) (server-start))
 #+END_SRC
 ** Temp file taming
@@ -142,6 +154,10 @@
 #+BEGIN_SRC emacs-lisp
 (defalias 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
+** Turn off downcasing from company
+#+BEGIN_SRC emacs-lisp
+;(setq-default company-irony-ignore-case t)
+#+END_SRC
 * Evil
 ** Config
 #+BEGIN_SRC emacs-lisp
@@ -158,6 +174,7 @@
 #+BEGIN_SRC emacs-lisp
 (evil-ex-define-cmd "bls" 'helm-buffers-list)
 (evil-ex-define-cmd "[me]ta" 'helm-M-x)
+(define-key evil-insert-state-map (kbd "C-n") 'helm-company)
 (global-set-key (kbd "M-x") 'helm-M-x)
 #+END_SRC
 
@@ -170,13 +187,11 @@
 
 *** Projectile
 #+BEGIN_SRC emacs-lisp
-(evil-ex-define-cmd "[Pf]ile" 'projectile-find-file)
-(evil-ex-define-cmd "Ag" 'projectile-ag)
+(evil-ex-define-cmd "ff" 'projectile-find-file)
 #+END_SRC
 *** Projectile-Rails
 #+BEGIN_SRC emacs-lisp
 ;; Projectile Rails find actions.
-
 (evil-ex-define-cmd "Emodel"      'projectile-rails-find-model)
 (evil-ex-define-cmd "ECmodel"     'projectile-rails-find-current-model)
 (evil-ex-define-cmd "Econtroller" 'projectile-rails-find-controller)
