@@ -7,6 +7,11 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(setq gc-cons-threshold 64000000)
+(add-hook 'after-init-hook #'(lambda ()
+                               ;; restore after startup
+                               (setq gc-cons-threshold 800000)))
+(set-language-environment "UTF-8")
 (package-initialize)
 
 (org-babel-load-file (expand-file-name "./configuration.org" user-emacs-directory))
