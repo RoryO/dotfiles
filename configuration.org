@@ -192,6 +192,8 @@
 #+BEGIN_SRC emacs-lisp
 (evil-ex-define-cmd "ff" 'projectile-find-file)
 (evil-ex-define-cmd "prg" 'rg-project)
+#+END_SRC
+
 *** Projectile-Rails
 #+BEGIN_SRC emacs-lisp
 ;; Projectile Rails find actions.
