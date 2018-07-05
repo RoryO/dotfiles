@@ -22,12 +22,16 @@
    #+BEGIN_SRC emacs-lisp
 (use-package chruby :ensure t :mode "\\.rb\\'")
 ;(use-package column-marker :ensure t :config (column-marker-1 120))
-(use-package company :ensure t :config (global-company-mode))
+(use-package company :ensure t :config
+  (use-package company-quickhelp :ensure t)
+  (global-company-mode)
+  (company-quickhelp-mode)
+)
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
 (use-package evil :ensure t :init (setq evil-want-integration nil) :config (evil-mode 1))
 (use-package evil-collection :after evil :ensure t :config (evil-collection-init))
 (use-package evil-matchit :ensure t)
-(use-package evil-org :mode "\\.org\\'" :ensure t)
+;(use-package evil-org :mode "\\.org\\'" :ensure t)
 (use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
 (use-package flycheck :ensure t :config
   (global-flycheck-mode)
@@ -51,24 +55,33 @@
 )
 (use-package magit :defer t :ensure t :config)
 (use-package markdown-mode :mode "\\.md\\'" :ensure t)
+(use-package monokai-theme :ensure t :config
+  (load-theme 'monokai t)
+)
 (use-package nlinum-relative :ensure t :config
   (add-hook 'prog-mode-hook 'nlinum-relative-mode)
   (nlinum-relative-setup-evil)
 )
-(use-package org :mode "\\.org\\'" :ensure t)
 (use-package projectile :ensure t :config
   (projectile-mode)
+)
+(use-package rainbow-delimiters :ensure t :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 )
 (use-package rg :ensure t)
 (use-package rinari :mode "\\.rb\\'" :ensure t)
 (use-package robe :mode "\\.rb\\'" :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
-  (use-package projectile-rails :mode "\\.rb\\'" :ensure t :config (projectile-rails-global-mode))
+  (use-package projectile-rails :mode "\\.rb\\'" :ensure t :config
+    (projectile-rails-global-mode)
+  )
   (push 'company-robe company-backends)
 )
 (use-package rspec-mode :mode "\\.rb\\'" :ensure t)
 (use-package slim-mode :mode "\\.slim\\'" :ensure t)
-(use-package solarized-theme :ensure t :config (load-theme 'solarized-dark t))
+(use-package solarized-theme :ensure t :config
+  ;(load-theme 'solarized-dark t)
+)
 (use-package web-mode :defer t :ensure t :config
   (add-to-list 'auto-mode-alist '("\\.js[x]\\\'" . web-mode))
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
@@ -163,6 +176,10 @@
 ** Turn off downcasing from company
 #+BEGIN_SRC emacs-lisp
 ;(setq-default company-irony-ignore-case t)
+#+END_SRC
+** Company accept autocomplete on keypress
+#+BEGIN_SRC emacs-lisp
+(setq-default company-auto-complete t)
 #+END_SRC
 * Evil
 ** Config
