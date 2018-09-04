@@ -41,6 +41,7 @@
 )
 (use-package hcl-mode :ensure t :mode "\\.tf\\'")
 (use-package helm :ensure t :config
+  (use-package helm-company :ensure t)
   (use-package helm-projectile :ensure t)
   (helm-mode)
 )
