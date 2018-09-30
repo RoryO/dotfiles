@@ -28,7 +28,7 @@
   (company-quickhelp-mode)
 )
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
-(use-package evil :ensure t :init (setq evil-want-integration nil) (setq evil-want-keybinding nil) :config (evil-mode 1))
+(use-package evil :ensure t :init (setq evil-want-keybinding nil) :config (evil-mode 1))
 (use-package evil-collection :after evil :ensure t :config (evil-collection-init))
 (use-package evil-matchit :ensure t)
 ;(use-package evil-org :mode "\\.org\\'" :ensure t)
@@ -177,7 +177,10 @@
 #+END_SRC
 ** Turn off downcasing from company
 #+BEGIN_SRC emacs-lisp
-;(setq-default company-irony-ignore-case t)
+(setq-default company-dabbrev-downcase nil)
+(setq-default company-dabbrev-ignore-case t)
+(setq-default company-dabbrev-code-ignore-case t)
+(setq completion-ignore-case 1)
 #+END_SRC
 ** Company accept autocomplete on keypress
 #+BEGIN_SRC emacs-lisp
@@ -199,7 +202,7 @@
 #+BEGIN_SRC emacs-lisp
 (evil-ex-define-cmd "bls" 'helm-buffers-list)
 (evil-ex-define-cmd "[me]ta" 'helm-M-x)
-(define-key evil-insert-state-map (kbd "C-n") 'helm-company)
+;(define-key evil-insert-state-map (kbd "C-n") 'helm-company)
 (global-set-key (kbd "M-x") 'helm-M-x)
 #+END_SRC
 
