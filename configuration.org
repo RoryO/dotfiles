@@ -1,4 +1,5 @@
 #+TITLE Configuration
+
 * Initial package installation
 ** Setup remote package sources
    #+BEGIN_SRC emacs-lisp
@@ -29,6 +30,7 @@
   (add-to-list 'company-backends 'company-irony)
 )
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
+(use-package ensime :ensure t)
 (use-package evil :ensure t :init (setq evil-want-keybinding nil) :config (evil-mode 1))
 (use-package evil-collection :after evil :ensure t :config (evil-collection-init))
 (use-package evil-matchit :ensure t)
