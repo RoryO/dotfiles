@@ -32,7 +32,7 @@
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
 (use-package ensime :ensure t)
 (use-package evil :ensure t :init (setq evil-want-keybinding nil) :config (evil-mode 1))
-(use-package evil-collection :after evil :ensure t :config (evil-collection-init))
+;(use-package evil-collection :after evil :ensure t :config (evil-collection-init))
 (use-package evil-matchit :ensure t)
 ;(use-package evil-org :mode "\\.org\\'" :ensure t)
 (use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
@@ -80,18 +80,26 @@
 (use-package rinari :mode "\\.rb\\'" :ensure t)
 (use-package robe :mode "\\.rb\\'" :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
-  (use-package projectile-rails :mode "\\.rb\\'" :ensure t :config
-    (projectile-rails-global-mode)
-  )
   (push 'company-robe company-backends)
+)
+(use-package projectile-rails :mode "\\.rb\\'" :ensure t :config
+  (projectile-rails-global-mode)
 )
 (use-package rspec-mode :mode "\\.rb\\'" :ensure t)
 (use-package slim-mode :mode "\\.slim\\'" :ensure t)
 (use-package solarized-theme :ensure t :config
   ;(load-theme 'solarized-dark t)
 )
+(use-package tide :ensure t
+  :after (typescript-mode company flycheck)
+  :hook (
+    (typescript-mode . tide-setup)
+    (typescript-mode . tide-hl-identifier-mode)
+    (before-save . tide-format-before-save)
+  )
+)
 (use-package web-mode :defer t :ensure t :config
-  (add-to-list 'auto-mode-alist '("\\.js[x]\\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.js[x]\\'" . web-mode))
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 )
 (use-package writegood-mode :ensure t)
