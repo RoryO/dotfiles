@@ -31,8 +31,16 @@
 )
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
 (use-package ensime :ensure t)
-(use-package evil :ensure t :init (setq evil-want-keybinding nil) :config (evil-mode 1))
-;(use-package evil-collection :after evil :ensure t :config (evil-collection-init))
+(use-package evil
+  :ensure t
+  :init
+    (setq evil-want-keybinding nil)
+  :config
+    (evil-mode 1))
+(use-package evil-collection :after evil :ensure t :config
+  (setq evil-collection-company-use-tng nil)
+  (evil-collection-init)
+)
 (use-package evil-matchit :ensure t)
 ;(use-package evil-org :mode "\\.org\\'" :ensure t)
 (use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
