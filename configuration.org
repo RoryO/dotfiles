@@ -90,9 +90,6 @@
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (push 'company-robe company-backends)
 )
-(use-package projectile-rails :mode "\\.rb\\'" :ensure t :config
-  (projectile-rails-global-mode)
-)
 (use-package rspec-mode :mode "\\.rb\\'" :ensure t)
 (use-package slim-mode :mode "\\.slim\\'" :ensure t)
 (use-package solarized-theme :ensure t :config
@@ -226,6 +223,7 @@
 (evil-ex-define-cmd "bls" 'helm-buffers-list)
 (evil-ex-define-cmd "[me]ta" 'helm-M-x)
 (define-key evil-insert-state-map (kbd "C-k") 'helm-company)
+(define-key evil-normal-state-map (kbd "C-j") 'helm-buffers-list)
 (global-set-key (kbd "M-x") 'helm-M-x)
 #+END_SRC
 
@@ -242,52 +240,13 @@
 (evil-ex-define-cmd "prg" 'rg-project)
 #+END_SRC
 
-*** Projectile-Rails
+*** Leader setup
 #+BEGIN_SRC emacs-lisp
-;; Projectile Rails find actions.
-(evil-ex-define-cmd "Emodel"      'projectile-rails-find-model)
-(evil-ex-define-cmd "ECmodel"     'projectile-rails-find-current-model)
-(evil-ex-define-cmd "Econtroller" 'projectile-rails-find-controller)
-(evil-ex-define-cmd "ECcontroller" 'projectile-rails-find-current-controller)
-(evil-ex-define-cmd "Eview"       'projectile-rails-find-view)
-(evil-ex-define-cmd "ECview"      'projectile-rails-find-current-view)
-(evil-ex-define-cmd "Ehelper"     'projectile-rails-find-helper)
-(evil-ex-define-cmd "EChelper"    'projectile-rails-find-current-helper)
-(evil-ex-define-cmd "Elib"        'projectile-rails-find-lib)
-(evil-ex-define-cmd "Efeature"    'projectile-rails-find-feature)
-(evil-ex-define-cmd "Espec"       'projectile-rails-find-spec)
-(evil-ex-define-cmd "ECspec"      'projectile-rails-find-current-spec)
-(evil-ex-define-cmd "Etest"       'projectile-rails-find-test)
-(evil-ex-define-cmd "ECtest"      'projectile-rails-find-current-test)
-(evil-ex-define-cmd "Emigration"  'projectile-rails-find-migration)
-(evil-ex-define-cmd "ECmigration" 'projectile-rails-find-current-migration)
-(evil-ex-define-cmd "Efixture"    'projectile-rails-find-fixture)
-(evil-ex-define-cmd "ECfixture"   'projectile-rails-find-current-fixture)
-(evil-ex-define-cmd "Ejavascript" 'projectile-rails-find-javascript)
-(evil-ex-define-cmd "Estylesheet" 'projectile-rails-find-stylesheet)
-(evil-ex-define-cmd "Elog"        'projectile-rails-find-log)
-(evil-ex-define-cmd "Einitializer" 'projectile-rails-find-initializer)
-(evil-ex-define-cmd "Eenv"        'projectile-rails-find-environment)
-(evil-ex-define-cmd "Elocale"     'projectile-rails-find-locale)
-(evil-ex-define-cmd "Emailer"     'projectile-rails-find-mailer)
-(evil-ex-define-cmd "Elayout"     'projectile-rails-find-layout)
-
-;; Projectile Rails general actions.
-
-(evil-ex-define-cmd "Rconsole"    'projectile-rails-console)
-(evil-ex-define-cmd "Rserver"     'projectile-rails-server)
-(evil-ex-define-cmd "Rrake"       'projectile-rails-rake)
-(evil-ex-define-cmd "Rgenerate"   'projectile-rails-generate)
-(evil-ex-define-cmd "Rextract"    'projectile-rails-extract-region)
-
-;; Projectile Rails go-to actions.
-
-(evil-ex-define-cmd "RGfile"      'projectile-rails-goto-file-at-point)
-(evil-ex-define-cmd "RGgemfile"   'projectile-rails-goto-gemfile)
-(evil-ex-define-cmd "RGroutes"    'projectile-rails-goto-routes)
-(evil-ex-define-cmd "RGschema"    'projectile-rails-goto-schema)
-(evil-ex-define-cmd "RGspechelper" 'projectile-rails-goto-spec-helper)
-  #+END_SRC
+(defvar ro/leader-map (make-sparse-keymap))
+(define-key evil-normal-state-map (kbd "SPC") ro/leader-map)
+(define-key ro/leader-map (kbd "b") 'helm-buffers-list)
+(define-key ro/leader-map (kbd "f") 'helm-projectile)
+#+END_SRC
 ** Major mode disable
    #+BEGIN_SRC emacs-lisp
 (evil-set-initial-state 'artist-mode 'emacs)
