@@ -97,6 +97,10 @@
 )
 (use-package rspec-mode :mode "\\.rb\\'" :ensure t)
 (use-package slim-mode :mode "\\.slim\\'" :ensure t)
+(use-package spaceline :ensure t :config
+  (spaceline-emacs-theme)
+  (spaceline-helm-mode)
+)
 (use-package solarized-theme :ensure t :config
   ;(load-theme 'solarized-dark t)
 )
@@ -252,6 +256,7 @@
 (define-key evil-normal-state-map (kbd "SPC") ro/leader-map)
 (define-key ro/leader-map (kbd "b") 'helm-buffers-list)
 (define-key ro/leader-map (kbd "f") 'helm-projectile)
+(define-key ro/leader-map (kbd "w") 'save-buffer)
 #+END_SRC
 ** Major mode disable
    #+BEGIN_SRC emacs-lisp
