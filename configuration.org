@@ -27,7 +27,6 @@
   )
 )
 (use-package chruby :ensure t :mode "\\.rb\\'")
-;(use-package column-marker :ensure t :config (column-marker-1 120))
 (use-package company :ensure t :config
   (use-package company-quickhelp :ensure t)
   (global-company-mode)
@@ -35,7 +34,6 @@
   (add-to-list 'company-backends 'company-irony)
 )
 (use-package editorconfig :ensure t :config (editorconfig-mode 1))
-(use-package ensime :ensure t)
 (use-package evil
   :ensure t
   :init
@@ -47,7 +45,6 @@
   (evil-collection-init)
 )
 (use-package evil-matchit :ensure t)
-;(use-package evil-org :mode "\\.org\\'" :ensure t)
 (use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
 (use-package flycheck :ensure t :config
   (global-flycheck-mode)
@@ -90,19 +87,14 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 )
 (use-package rg :ensure t)
-(use-package rinari :mode "\\.rb\\'" :ensure t)
 (use-package robe :mode "\\.rb\\'" :ensure t :config
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (push 'company-robe company-backends)
 )
-(use-package rspec-mode :mode "\\.rb\\'" :ensure t)
 (use-package slim-mode :mode "\\.slim\\'" :ensure t)
 (use-package spaceline :ensure t :config
   (spaceline-emacs-theme)
   (spaceline-helm-mode)
-)
-(use-package solarized-theme :ensure t :config
-  ;(load-theme 'solarized-dark t)
 )
 (use-package tide :ensure t
   :after (typescript-mode company flycheck)
