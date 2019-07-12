@@ -4,7 +4,7 @@
 	signingkey = CD047DEA
 [core]
 	editor = emacsclient
-	excludesfile = /home/rory/.gitignore
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
 [mergetool "[tool]"]
@@ -37,3 +37,5 @@
 	required = true
 [gpg]
 	program = gpg2
+[pager]
+	branch = false
