@@ -210,6 +210,10 @@
 #+BEGIN_SRC emacs-lisp
 (setq-default company-auto-complete t)
 #+END_SRC
+** Company delay before auto complete
+#+BEGIN_SRC emacs-lisp
+(setq-default company-idle-delay 0.1)
+#+END_SRC
 * Evil
 ** Config
 #+BEGIN_SRC emacs-lisp
