@@ -31,9 +31,7 @@
   (use-package company-quickhelp :ensure t)
   (global-company-mode)
   (company-quickhelp-mode)
-  (add-to-list 'company-backends 'company-irony)
 )
-(use-package editorconfig :ensure t :config (editorconfig-mode 1))
 (use-package evil
   :ensure t
   :init
@@ -48,9 +46,6 @@
 (use-package evil-surround :ensure t :config (global-evil-surround-mode 1))
 (use-package flycheck :ensure t :config
   (global-flycheck-mode)
-  (use-package flycheck-irony :ensure t :config
-    (add-hook 'flycheck-mode #'flycheck-irony-setup)
-  )
 )
 (use-package hcl-mode :ensure t :mode "\\.tf\\'")
 (use-package helm :ensure t :config
@@ -73,7 +68,7 @@
     (push 'company-lsp company-backends)
   )
 )
-(use-package magit :ensure t :config)
+(use-package magit :ensure t)
 (use-package markdown-mode :mode "\\.md\\'" :ensure t)
 (use-package monokai-theme :ensure t :config
   (load-theme 'monokai t)
