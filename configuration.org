@@ -26,7 +26,6 @@
     (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
   )
 )
-(use-package chruby :ensure t :mode "\\.rb\\'")
 (use-package company :ensure t :config
   (use-package company-quickhelp :ensure t)
   (global-company-mode)
@@ -88,7 +87,6 @@
   (add-hook 'enh-ruby-mode-hook 'robe-mode)
   (push 'company-robe company-backends)
 )
-(use-package slim-mode :mode "\\.slim\\'" :ensure t)
 (use-package spaceline :ensure t :config
   (spaceline-emacs-theme)
   (spaceline-helm-mode)
