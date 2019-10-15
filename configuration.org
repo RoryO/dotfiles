@@ -72,10 +72,6 @@
 (use-package monokai-theme :ensure t :config
   (load-theme 'monokai t)
 )
-(use-package nlinum-relative :ensure t :config
-  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
-  (nlinum-relative-setup-evil)
-)
 (use-package projectile :ensure t :config
   (projectile-mode)
 )
@@ -207,6 +203,11 @@
 ** Company delay before auto complete
 #+BEGIN_SRC emacs-lisp
 (setq-default company-idle-delay 0.1)
+#+END_SRC
+** Line numbers
+#+BEGIN_SRC emacs-lisp
+(setq-default display-line-numbers (quote relative))
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 #+END_SRC
 * Evil
 ** Config
