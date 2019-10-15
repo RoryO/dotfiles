@@ -209,6 +209,10 @@
 (setq-default display-line-numbers (quote relative))
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 #+END_SRC
+** clangd results limit
+#+BEGIN_SRC emacs-lisp
+(setq-default lsp-clients-clangd-args (quote ("-limit-results=15")))
+#+END_SRC
 * Evil
 ** Config
 #+BEGIN_SRC emacs-lisp
