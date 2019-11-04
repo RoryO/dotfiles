@@ -149,6 +149,10 @@
 #+BEGIN_SRC emacs-lisp
 (scroll-bar-mode -1)
 #+END_SRC
+** Menu bars
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+#+END_SRC
 ** Org Mode
    #+BEGIN_SRC emacs-lisp
    (setq org-src-fontify-natively t)
