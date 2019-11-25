@@ -28,7 +28,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (graphql-mode company-lsp lsp-ui lsp-mode spaceline neotree all-the-icons-dired all-the-icons tide hcl-mode rainbow-delimiters org-plus-contrib monokai-theme company-quickhelp irony company-irony irony-mode helm-company evil-collection writegood-mode nlinum-relative editorconfig rinari rspec-mode evil-surround evil-org company chruby evil-matchit markdown-mode ag projectile-rails slim-mode company-mode magit evil use-package column-marker yaml-mode auto-complete hemisu-theme helm projectile robe enh-ruby-mode relative-line-numbers flycheck web-mode solarized-theme ##)))
+    (enh-ruby-mode yasnippet yaml-mode writegood-mode web-mode tide spaceline robe rg rainbow-delimiters monokai-theme magit company-lsp lsp-ui lsp-mode inf-ruby helm-projectile helm-company helm hcl-mode flycheck evil-surround evil-matchit evil-collection evil company-quickhelp company all-the-icons-dired all-the-icons use-package)))
  '(projectile-mode t nil (projectile))
  '(ring-bell-function (quote ignore))
  '(semantic-mode t)
