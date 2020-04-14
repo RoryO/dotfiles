@@ -6,8 +6,8 @@
 ;; These are used for a number of things, particularly for GPG configuration,
 ;; some email clients, file templates and snippets.
 (setq
-   user-full-name "John Doe"
-   user-mail-address "john@doe.com"
+   user-full-name "Rory O'Connell"
+   user-mail-address "rory.ocon@gmail.com"
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -30,8 +30,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-  doom-font (font-spec :family "Consolas" :size 32)
-  company-idle-delay 0.2
+  doom-font (font-spec :family "Consolas" :size 36)
+  company-idle-delay 0.5
   company-auto-complete t
   w32-pass-lwindow-to-system nil
   w32-pass-rwindow-to-system nil
@@ -53,3 +53,5 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 (after! projectile (setq projectile-indexing-method 'native))
+(after! company (setq company-global-modes '(not markdown-mode erc-mode message-mode help-mode gud-mode eshell-mode)))
+(after! writeroom-mode (setq writeroom-width 90))
