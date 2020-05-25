@@ -35,7 +35,13 @@
   company-auto-complete t
   w32-pass-lwindow-to-system nil
   w32-pass-rwindow-to-system nil
+  lsp-clients-clangd-args '("--completion-style=detailed" "-j=4" "--background-index")
+  completion-ignore-case t
+  evil-respect-visual-line-mode t
 )
+
+;;(prefer-coding-system 'utf-16)
+;;(set-default-coding-systems 'utf-16)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
