@@ -6,3 +6,5 @@ configuration.el
 elpa/
 semanticdb/
 .tool-versions
+.ccls*
+.vscode
