@@ -30,15 +30,23 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-  doom-font (font-spec :family "Consolas" :size 36)
-  company-idle-delay 0.5
+  ;;(cond
+  ;;  ((eq system-type 'windows-nt)
+  doom-font (font-spec :family "IBM Plex Mono Light" :size 36)
+;;   ((eq system-type 'gnu/linux))
+  ;;)
+  company-idle-delay 0.3
   company-auto-complete t
-  w32-pass-lwindow-to-system nil
-  w32-pass-rwindow-to-system nil
-  lsp-clients-clangd-args '("--completion-style=detailed" "-j=4" "--background-index")
+  lsp-clients-clangd-args '("--completion-style=detailed"
+                            "-j=4"
+                            "--background-index"
+                            "--offset-encoding=utf-8")
   completion-ignore-case t
-  evil-respect-visual-line-mode t
+  confirm-kill-emacs nil
+  flycheck-disabled-checkers '(c/c++-clang)
 )
+
+(add-to-list 'auto-mode-alist '("\\.md\\.html" . markdown-mode))
 
 ;;(prefer-coding-system 'utf-16)
 ;;(set-default-coding-systems 'utf-16)
@@ -59,5 +67,5 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 (after! projectile (setq projectile-indexing-method 'native))
-(after! company (setq company-global-modes '(not markdown-mode erc-mode message-mode help-mode gud-mode eshell-mode)))
+(after! company (setq company-global-modes '(not gfm-mode markdown-mode erc-mode message-mode help-mode gud-mode eshell-mode)))
 (after! writeroom-mode (setq writeroom-width 90))
