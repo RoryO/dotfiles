@@ -32,7 +32,7 @@
 ;; font string. You generally only need these two:
   ;;(cond
   ;;  ((eq system-type 'windows-nt)
-  doom-font (font-spec :family "IBM Plex Mono Light" :size 36)
+  doom-font (font-spec :family "IBM Plex Mono Light" :size 34)
 ;;   ((eq system-type 'gnu/linux))
   ;;)
   company-idle-delay 0.3
@@ -44,6 +44,7 @@
   completion-ignore-case t
   confirm-kill-emacs nil
   flycheck-disabled-checkers '(c/c++-clang)
+  ispell-dictionary "en"
 )
 
 (add-to-list 'auto-mode-alist '("\\.md\\.html" . markdown-mode))
