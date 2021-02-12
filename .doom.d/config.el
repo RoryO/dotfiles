@@ -44,7 +44,7 @@
   completion-ignore-case t
   confirm-kill-emacs nil
   flycheck-disabled-checkers '(c/c++-clang)
-  ispell-dictionary "en"
+  ispell-dictionary "en_US"
 )
 
 (add-to-list 'auto-mode-alist '("\\.md\\.html" . markdown-mode))
